@@ -1,0 +1,21 @@
+{
+  "name": "pembayaranku/php-sdk",
+  "description": "Official PHP SDK for PembayaranKU Merchant API V1",
+  "type": "library",
+  "license": "proprietary",
+  "authors": [{ "name": "PT MEDIA SIRINGO ABADI" }],
+  "keywords": ["pembayaranku", "payments", "qris", "merchant-api"],
+  "homepage": "https://github.com/jagoanaiku/pembayaranku-php-sdk",
+  "support": { "issues": "https://github.com/jagoanaiku/pembayaranku-php-sdk/issues", "source": "https://github.com/jagoanaiku/pembayaranku-php-sdk" },
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": { "PembayaranKu\\": "src/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "PembayaranKu\\Tests\\": "tests/" }
+  }
+}

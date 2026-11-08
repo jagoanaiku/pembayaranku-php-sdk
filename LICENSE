@@ -1,0 +1,24 @@
+PEMBAYARANKU PROPRIETARY SDK LICENSE
+
+Copyright (c) 2026 PT MEDIA SIRINGO ABADI. All rights reserved.
+PT MEDIA SIRINGO ABADI operates the PembayaranKU service and is referred to
+in this license as "PembayaranKU".
+
+1. Permission
+
+Anyone may download, install, and use the PembayaranKU Node.js SDK, PHP SDK,
+and Browser JavaScript SDK solely to create or operate integrations with
+PembayaranKU services and APIs. This permission is granted without account
+registration, administrator approval, or manual approval.
+
+2. Restrictions
+
+You may not sell, resell, rent, lease, sublicense, or redistribute an SDK as
+a standalone product, or use an SDK to build, provide, or support a service
+other than an integration with PembayaranKU services and APIs.
+
+3. Ownership
+
+The SDKs and their source code remain the property of PT MEDIA SIRINGO ABADI.
+No ownership, copyright, or other intellectual-property rights are transferred
+to you. You receive only the limited permission stated in section 1.
