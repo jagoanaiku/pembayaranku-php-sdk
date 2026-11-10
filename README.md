@@ -4,7 +4,7 @@ Official framework-agnostic PHP client for Merchant API V1. Requires PHP 8.1+, e
 
 ## Install
 
-After the package is registered with Packagist, install with `composer require pembayaranku/php-sdk:^1.0`. The distributable package lives at [github.com/jagoanaiku/pembayaranku-php-sdk](https://github.com/jagoanaiku/pembayaranku-php-sdk), with its `composer.json` at repository root and a `1.0.0` release tag. For development from the main monorepo, add its `sdks/php` directory as a Composer path repository and require `pembayaranku/php-sdk:*`; for example:
+Install release 1.1.0 with `composer require pembayaranku/php-sdk:^1.1` after publication. See the [Packagist listing](https://packagist.org/packages/pembayaranku/php-sdk) and distribution repository [jagoanaiku/pembayaranku-php-sdk](https://github.com/jagoanaiku/pembayaranku-php-sdk). For development from the main monorepo, add its `sdks/php` directory as a Composer path repository and require `pembayaranku/php-sdk:*`; for example:
 
 ```json
 {
@@ -40,7 +40,11 @@ echo $invoice['payment_url'];
 - `cancelInvoice(string $invoiceId)` — `POST /invoices/{invoiceId}/cancel` (Live only).
 - `simulateSandboxInvoice(string $invoiceId, string $status)` — Sandbox status simulation.
 
-API errors throw `PembayaranKu\ApiException`, with `httpStatus()`, `apiCode()`, and `retryAfter()`. Network failures use status `0`/`network_error`. Retry an uncertain create request with the same idempotency key; use a new key for a new operation. Returned fee and payment status fields reflect the API and are not recalculated by the SDK.
+API errors throw `PembayaranKu\ApiException`, with `httpStatus()`, `apiCode()`, and `retryAfter()`. Network failures use status `0`/`network_error`. Retry an uncertain create request with the same idempotency key; use a new key for a new operation. `cancelInvoice()` is Live-only and rejects Sandbox keys locally. Returned fee and payment fields reflect the immutable invoice snapshot and API lifecycle; the SDK does not recalculate fees. Live reaches `paid` after validated matching, while Finance runs asynchronously after that state.
+
+## Webhooks
+
+The PHP SDK is an outbound REST client; it does not receive webhooks. Receive events on your HTTPS application server, verify the raw request body with the configured webhook secret and `X-PembayaranKu-Signature`, and persist `X-PembayaranKu-Event-Id` under a unique constraint before applying effects. Process `payment.paid` idempotently by event ID and invoice/order ID. Do not wait for asynchronous Finance to fulfill a paid order. See the [webhook guide](../../docs/api/public-api-webhook-v1.md#webhooks).
 
 ## Sandbox
 
@@ -48,4 +52,4 @@ Use a test key from Dashboard → Developer, create a test invoice, and use `sim
 
 ## Release status
 
-Version 1.0.0 uses the proprietary terms in [`LICENSE`](LICENSE). The license permits use to integrate with PembayaranKU without account registration or manual approval. The distribution repository and `1.0.0` tag are prepared; Packagist listing is a separate publication step.
+Version 1.0.0 is currently published on [Packagist](https://packagist.org/packages/pembayaranku/php-sdk). This repository prepares 1.1.0 for publication. The SDK uses the proprietary terms in [`LICENSE`](LICENSE), which allow anyone to integrate with PembayaranKU without merchant registration or manual approval.

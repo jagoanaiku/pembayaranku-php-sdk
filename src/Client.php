@@ -88,6 +88,9 @@ final class Client
     /** Cancellation is supported for Live invoices; Sandbox uses its simulator. @return array<string, mixed> */
     public function cancelInvoice(string $invoiceId): array
     {
+        if ($this->environment !== 'live') {
+            throw new InvalidArgumentException('cancelInvoice is available only for Live keys; use simulateSandboxInvoice for Sandbox.');
+        }
         return $this->request('POST', '/invoices/' . rawurlencode($invoiceId) . '/cancel');
     }
 
