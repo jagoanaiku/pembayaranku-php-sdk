@@ -52,4 +52,4 @@ Use a test key from Dashboard → Developer, create a test invoice, and use `sim
 
 ## Release status
 
-Version 1.0.0 is currently published on [Packagist](https://packagist.org/packages/pembayaranku/php-sdk). This repository prepares 1.1.0 for publication. The SDK uses the proprietary terms in [`LICENSE`](LICENSE), which allow anyone to integrate with PembayaranKU without merchant registration or manual approval.
+Version 1.1.0 is published on [Packagist](https://packagist.org/packages/pembayaranku/php-sdk) and can be installed with `composer require pembayaranku/php-sdk:^1.1`. The SDK uses the proprietary terms in [`LICENSE`](LICENSE), which allow anyone to integrate with PembayaranKU without merchant registration or manual approval.
